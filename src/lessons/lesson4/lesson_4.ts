@@ -7,25 +7,52 @@ console.log('lesson 4');
 // Task 01
 // Создайте промис, который постоянно находиться в состоянии pending.
 // В конструкторе промиса выведите в консоль сообщение "Promise is created".
+/*const promise = new Promise( () => {
+    console.log("Promise is created")
+} )
+console.log(promise)*/
 
 
 // Task 02
 // Создайте промис, который после создания сразу же переходит в состояние resolve
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
+/*const promise = new Promise( (resolve, reject) => {
+    resolve('Promise Data')
+} )
 
+promise.then
+( (result)=> {
+    console.log(result)} )
+console.log(promise)*/
 
 // Task 03
 // Создайте промис, который после создания сразу же переходит в состояние rejected
 // и возвращает строку 'Promise Error'
 // Получите данные промиса и выведите их в консоль
+/*const promise = new Promise( (resolve, reject) => {
+    reject('Promise Error')
+} )
 
+promise.catch
+( (result)=> {
+    console.log(result)} )
+console.log(promise)*/
 
 // Task 04
 // Создайте промис, который переходит в состояние resolved через 3с.
 // (Используйте setTimeout)
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
+/*const promise = new Promise( (resolve, reject) => {
+    setTimeout(() => {resolve('Promise Data')}, 3000)
+} )
+
+promise
+    .then((result)=> {
+        console.log(result)
+    })
+console.log(promise)*/
 
 
 // Task 05
@@ -40,6 +67,37 @@ console.log('lesson 4');
 // описаного выше объекта: свойство promise получает новый созданный промис,
 // свойства resolve и reject получают ссылки на соответствующие функции
 // resolve и reject. Следующие два обработчика запускают методы resolve и reject.
+/*const handlePromise = {
+    promise: null,
+    resolve: null,
+    reject: null,
+    onSuccess: (res) => {
+        handlePromise.resolve(res)
+        console.log(`Promise is resolved with data: ${res}`)},
+    onError: (err) => {
+        handlePromise.reject(err)
+        console.log(`Promise is rejected with error: ${err}`)}
+}
+
+
+const onClickBtnHandler1 = () => {
+    const promise1 = new Promise( (resolve, reject) => {
+        handlePromise.resolve = resolve
+        handlePromise.reject = reject
+    })
+    handlePromise.promise = promise1
+    console.log(handlePromise.promise)
+}
+const onClickBtnHandler2 = () => {
+    handlePromise.onSuccess("data")
+    console.log(handlePromise.promise)
+}
+const onClickBtnHandler3 = () => {
+    handlePromise.onError("error")
+    console.log(handlePromise.promise)
+}
+
+console.log(handlePromise.promise)*/
 
 
 // Task 06
@@ -49,13 +107,68 @@ console.log('lesson 4');
 // Создайте функцию print, которая выводит в консоль значение своего параметра
 // Добавьте два метода then и передайте созданные функции.
 
+/*const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve({message: "My name is"})
+    }, 1000)
+})
+
+const onSuccess = (param) => {
+    return param + "Nastassia"
+}
+
+const print = (parameter) => {
+    console.log(parameter)
+}
+
+promise
+    .then( (res) => {
+        onSuccess(res.message)
+    } )
+    .then( (res) => {
+        print(res.message)
+    } )*/
+
 
 // Task 7
 // Создайте три промиса. Первый промис возвращает объект { name: "Anna" } через 2с,
 // второй промис возвращает объект {age: 16} через 3 с, а третий {city: ''} через 4с.
 // Получите результаты работы промисов, объедините свойства объектов
 // и выведите в консоль {name, age, city}
+/*
+const promise1 = new Promise( (resolve, reject) => {
+    setTimeout(() => {
+        resolve({name: "Anna"})
+    }, 2000)
+} )
 
+const promise2 = new Promise( (resolve, reject) => {
+    setTimeout(() => {
+        resolve({age: 16})
+    }, 3000)
+} )
+
+const promise3 = new Promise( (resolve, reject) => {
+    setTimeout(() => {
+        resolve({city: ''})
+    }, 4000)
+} )
+
+let result1 = {}
+
+promise1
+    .then((res)=> {
+        result1 = { ...result1, name: res.name}
+    })
+promise2
+    .then((res)=> {
+        result1 = { ...result1, age: res.age}
+    })
+promise3
+    .then((res)=> {
+        result1 = { ...result1, city: res.city}
+    })
+*/
 
 
 // just a plug
